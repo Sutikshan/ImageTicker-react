@@ -1,33 +1,41 @@
 import React, { Component } from 'react';
-import './PaginationBar.css';
+import './styles/PaginationBar.css';
+
+const active = 'active col';
+const deactive = 'deactive col';
 
 class PaginationBar extends Component {
   constructor(props) {
     super(props);
     this.state = { first: 0, last: 3 };
   }
+  firstVisible = (first) => first === 0;
+  lastVisible = (last, imageCount) => last === imageCount;
+
+  turnPage = (page) => {
+    const { first, last } = this.state;
+    this.setState({ first: first + page, last: last + page });
+  }
 
   next = () => {
     const { first, last } = this.state;
     const { imageCount } = this.props;
 
-    if (last < imageCount) {
-      this.setState({ first: first + 1, last: last + 1 });
+    if (!this.lastVisible(last, imageCount)) {
+      this.turnPage(1);
     }
   }
 
   prev = () => {
     const { first, last } = this.state;
 
-    if (first > 0) {
-      this.setState({ first: first - 1, last: last - 1 });
+    if (!this.firstVisible(first)) {
+      this.turnPage(-1);
     }
   }
   render() {
     const { first, last } = this.state;
-    const { imageCount, changeImage } = this.props;
-    const active = 'active col';
-    const deactive = 'deactive col';
+    const { changeImage } = this.props;
     const imageCounter = [];
 
     for (let i = first; i < last; i++) {
@@ -38,13 +46,8 @@ class PaginationBar extends Component {
       ));
     }
     // decide the styling of left and right arrow keys
-    let nextClass = active, prevClass = active;
-    if (first === 0) {
-      prevClass = deactive;
-    }
-    if (last >= imageCount) {
-      nextClass = deactive;
-    }
+    const prevClass = this.firstVisible(first) ? deactive : active;
+    const nextClass = this.lastVisible(last) ? deactive : active;
 
     return (
       <span className="pagination-bar">
@@ -55,6 +58,5 @@ class PaginationBar extends Component {
     );
   }
 }
-
 
 export default PaginationBar;

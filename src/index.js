@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
+import './styles/index.css';
 
 const data = {"carousel":[
 	{"imageurl": "images/bike.png", "title":"A Guy On A Bike", "synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "link": "www.good.com"},

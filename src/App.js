@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ImageTicker from './ImageTicker';
-import './App.css';
+import './styles/App.css';
 import './images';
 
 class App extends Component {

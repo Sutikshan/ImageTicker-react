@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import images from './images';
-import './ImageTicker.css';
+import './styles/ImageTicker.css';
 import PaginationBar from './PaginationBar.js';
 
 class ImageTicker extends Component {
