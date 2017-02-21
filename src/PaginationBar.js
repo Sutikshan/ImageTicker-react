@@ -10,7 +10,7 @@ class PaginationBar extends Component {
     this.state = { first: 0, last: 3 };
   }
   firstVisible = (first) => first === 0;
-  lastVisible = (last, imageCount) => last === imageCount;
+  lastVisible = (last, imageCount) => last >= imageCount;
 
   turnPage = (page) => {
     const { first, last } = this.state;
@@ -33,26 +33,35 @@ class PaginationBar extends Component {
       this.turnPage(-1);
     }
   }
-  render() {
-    const { first, last } = this.state;
+
+  getPages = (first, last) => {
     const { changeImage } = this.props;
-    const imageCounter = [];
+    const pages = [];
 
     for (let i = first; i < last; i++) {
-      imageCounter.push((
+      pages.push((
         <div className={active} key={i} onClick={() => changeImage(i)}>
           {i}
         </div>
       ));
     }
+
+    return pages;
+  }
+
+  render() {
+    const { first, last } = this.state;
+    const imageCount = this.props.imageCount;
+    const pages = this.getPages(first, last);
+
     // decide the styling of left and right arrow keys
     const prevClass = this.firstVisible(first) ? deactive : active;
-    const nextClass = this.lastVisible(last) ? deactive : active;
+    const nextClass = this.lastVisible(last, imageCount) ? deactive : active;
 
     return (
       <span className="pagination-bar">
           <div className={prevClass} onClick={this.prev}>&lt;</div>
-          { imageCounter }
+          { pages }
           <div className={nextClass} onClick={this.next}>&gt;</div>
       </span>
     );
