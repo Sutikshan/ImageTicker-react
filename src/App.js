@@ -8,12 +8,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="App-header">
+        <div>
           <ImageTicker data={this.props.data} alt="logo" />
         </div>
-        <p className="App-intro">
-          Images.
-        </p>
       </div>
     );
   }

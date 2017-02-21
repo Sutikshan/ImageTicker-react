@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+
 const data = {"carousel":[
 	{"imageurl": "images/bike.png", "title":"A Guy On A Bike", "synopsis":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", "link": "www.good.com"},
 	{"imageurl": "images/library.png", "title":"Books And Stuff", "synopsis":"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.", "link": "www.bad.com"},
