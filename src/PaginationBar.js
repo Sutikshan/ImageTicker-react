@@ -18,7 +18,7 @@ class PaginationBar extends Component {
   }
 
   next = () => {
-    const { first, last } = this.state;
+    const { last } = this.state;
     const { imageCount } = this.props;
 
     if (!this.lastVisible(last, imageCount)) {
@@ -27,7 +27,7 @@ class PaginationBar extends Component {
   }
 
   prev = () => {
-    const { first, last } = this.state;
+    const { first } = this.state;
 
     if (!this.firstVisible(first)) {
       this.turnPage(-1);
